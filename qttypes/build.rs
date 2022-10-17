@@ -44,7 +44,7 @@ fn qmake_query(var: &str) -> String {
             (|| {
                 // Some Linux distributions (Fedora, Arch) rename qmake to qmake-qt5.
                 // qmake6 is somehow an official alias
-                for qmake in &["qmake", "qmake6", "qmake-qt5"] {
+                for qmake in &["qmake6", "qmake", "qmake-qt5"] {
                     match Command::new(qmake).args(&["-query", var]).output() {
                         Err(err) if err.kind() == std::io::ErrorKind::NotFound => continue,
                         x => return x,
